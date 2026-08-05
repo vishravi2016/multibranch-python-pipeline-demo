@@ -66,8 +66,12 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
-                    if not exist reports mkdir reports
-                    pytest -v --junitxml=reports\\test-results.xml
+                    
+                    python -c "import sys; print(sys.path)"
+
+                    set PYTHONPATH=%CD%
+
+                    python -m pytest -v
                 '''
             }
         }
