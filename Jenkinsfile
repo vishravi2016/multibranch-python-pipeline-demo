@@ -42,6 +42,25 @@ pipeline {
                 '''
             }
         }
+        stage('verify workspace'){
+            steps{
+                bat '''
+                echo current directory
+                cd
+                echo.
+                echo workspace files
+                dir
+
+                echo.
+                echo app folder
+                dir app
+
+                echo.
+                echo tests folder
+                dir tests
+                '''
+            }
+        }
 
         stage('Unit Tests') {
             steps {
