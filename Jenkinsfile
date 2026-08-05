@@ -11,6 +11,7 @@ pipeline {
     }
 
     stages {
+        
         stage('Branch Information') {
             steps {
                 echo "Building branch: ${env.BRANCH_NAME}"
@@ -20,6 +21,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
+                deleteDir()
                 checkout scm
             }
         }
@@ -66,12 +68,15 @@ pipeline {
             steps {
                 bat '''
                     call venv\\Scripts\\activate
+
+                    if exists reports rmdir /s /q reports
+                    mkdir reports
+
+                    set PYTHONPATH=%CD%          
+                   
+                    python -m pytest -v --junitxml=reports\\test-results.xml            
+
                     
-                    python -c "import sys; print(sys.path)"
-
-                    set PYTHONPATH=%CD%
-
-                    python -m pytest -v
                 '''
             }
         }
@@ -111,8 +116,8 @@ pipeline {
 
     post {
         always {
-            junit allowEmptyResults: true,
-                  testResults: 'reports/test-results.xml'
+            junit testResults: 'reports/test-results.xml',
+                    allowEmptyResults:false
 
             archiveArtifacts artifacts: 'reports/**/*',
                              allowEmptyArchive: true
