@@ -69,9 +69,12 @@ pipeline {
                 bat '''
                     call venv\\Scripts\\activate
 
-                    if exists reports rmdir /s /q reports
+                    echo Cleaning previous reports
+
+                    rmdir /s /q reports 2>nul
                     mkdir reports
 
+                    echo Running unit tests
                     set PYTHONPATH=%CD%          
                    
                     python -m pytest -v --junitxml=reports\\test-results.xml            
