@@ -133,5 +133,8 @@ pipeline {
         failure {
             echo "${env.BRANCH_NAME} branch build failed"
         }
+        unstable{
+             echo "${env.BRANCH_NAME} branch build is unstable"
+        }
     }
 }
