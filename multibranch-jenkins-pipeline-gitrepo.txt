@@ -1,0 +1,32 @@
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git remote add origin https://github.com/vishravi2016/multibranch-python-pipeline-demo.git
+error: remote origin already exists.
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git branch -M main
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git push -u origin main 
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'main' on GitHub by visiting:
+remote:      https://github.com/vishravi2016/multibranch-python-pipeline-demo/pull/new/main
+remote: 
+To https://github.com/vishravi2016/multibranch-python-pipeline-demo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git checkout -b develop
+Switched to a new branch 'develop'
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git push -u origin develop
+branch 'develop' set up to track 'origin/develop'.
+Everything up-to-date
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git checkout -b feature-login
+fatal: a branch named 'feature-login' already exists
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git push -u origin feature-login
+branch 'feature-login' set up to track 'origin/feature-login'.
+Everything up-to-date
+
+C:\raviwork\DevOps-CI-CD\multibranch-python-pipeline-demo>git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
