@@ -104,6 +104,16 @@ pipeline {
             }
         }
 
+        stage('production readiness check') {
+            when {
+                branch 'main'
+            }
+
+            steps {
+                echo 'checking production readiness'
+            }
+        }
+
         stage('Feature Branch Verification') {
             when {
                 expression {
