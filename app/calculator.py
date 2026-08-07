@@ -6,8 +6,4 @@ def divide(a,b):
     if b==0:
         raise ValueError("cannot divide by zero")
     return a/b
-<<<<<<< HEAD
 print("running develop branch")
-=======
-print("Running integration verification for 'feature-login' branch")
->>>>>>> main
